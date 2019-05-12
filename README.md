@@ -29,11 +29,13 @@
   * -r RULE, --rule RULE  Rule Type [request_header,request_body ...etc]
   * -s REPLACE, --replace REPLACE
                         Literal String to Replace
+  * -x, --tmp             replace with regex and add a temp var
   * -o OUTPUT, --output OUTPUT
                         Option JSON file
 
 
-#### Examples
+
+### Examples
 ##### Removing Headers/Parameters
 * ``` ./generate.py -f replaced_headers.txt -c "Removing Headers" --rule "request_header" --replace "" --output remove.json ```
 ##### Adding Headers/Parameters
