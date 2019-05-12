@@ -33,8 +33,14 @@
                         Option JSON file
 
 
-#### Example
-``` ./generate.py -f parameters.txt -c "SSRF Matching" --rule "request_param_name" --replace "http://attacker:port/" --output opt.json ```
+#### Examples
+##### Removing Headers/Parameters
+* ``` ./generate.py -f replaced_headers.txt -c "Removing Headers" --rule "request_header" --replace "" --output remove.json ```
+##### Adding Headers/Parameters
+* ``` ./generate.py -f added_headers.txt -c "Adding Headers" --rule "request_header" --replace "X-XSS-Protection: 0" --output adding.json ```
+##### Replacing Headers/Parameters
+* You might use the argument -x to use the Regex Match and Replace option
+* ``` ./generate.py -f parameters.txt -c "SSRF Matching" --rule "request_param_name" --replace "&tmp" --output opt.json ``` 
 
 ## Contribution, Credits & License
 ### Ways to contribute
