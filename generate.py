@@ -11,6 +11,7 @@ parser.add_argument('-f', '--file', help='Parameters/Variables to be Matched', d
 parser.add_argument('-c', '--comment', help='Comment or Bug Class [SSRF, RCE, XSS ..etc]', dest='comment')
 parser.add_argument('-r', '--rule', help='Rule Type [request_header,request_body ...etc]', dest='rule')
 parser.add_argument('-s', '--replace', help='Literal String to Replace', dest='replace')
+parser.add_argument('-x', '--tmp',action="store_true",default=False, help='replace with regex and add a temp var', dest='regrep')
 parser.add_argument('-o', '--output', help='Option JSON file', dest='output')
 args = parser.parse_args()
 
@@ -20,6 +21,7 @@ comment = str(args.comment)
 rule = str(args.rule)
 replace = str(args.replace)
 output = str(args.output)
+tmp = args.regrep
 
 #Decorator
 #Match and Repalce JSON Object to be parsed 
@@ -41,7 +43,17 @@ def innerReplace(param, comment, rule, replace):
     try:
         param = open(param,'r')
         for par in param:
-            mObj.append({
+            if tmp:
+                mObj.append({
+                            "comment":""+comment+"",
+                            "enabled":True,
+                            "is_simple_match":True,
+                            "rule_type":""+rule+"",
+                            "string_match":"^"+par.strip()+".*$",
+                            "string_replace":""+par.strip()+"="+replace+"&tmp"
+                        })
+            else:
+                mObj.append({
                         "comment":""+comment+"",
                         "enabled":True,
                         "is_simple_match":True,
