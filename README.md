@@ -42,7 +42,7 @@
 * ``` ./generate.py -f added_headers.txt -c "Adding Headers" --rule "request_header" --replace "X-XSS-Protection: 0" --output adding.json ```
 ##### Replacing Headers/Parameters
 * You might use the argument -x to use the Regex Match and Replace option
-* ``` ./generate.py -f parameters.txt -c "SSRF Matching" --rule "request_param_name" --replace "&tmp" --output opt.json ``` 
+* ``` ./generate.py -f parameters.txt -c "SSRF Matching" --rule "request_param_name" --replace "attacker.com:port" --output opt.json ``` 
 
 ## Contribution, Credits & License
 ### Ways to contribute
