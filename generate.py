@@ -47,7 +47,7 @@ def innerReplace(param, comment, rule, replace):
                 mObj.append({
                             "comment":""+comment+"",
                             "enabled":True,
-                            "is_simple_match":True,
+                            "is_simple_match":False,
                             "rule_type":""+rule+"",
                             "string_match":"^"+par.strip()+".*$",
                             "string_replace":""+par.strip()+"="+replace+"&tmp"
